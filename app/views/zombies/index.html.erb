@@ -6,8 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Bio</th>
-      <th>Age</th>
+      <th>Brain</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +15,7 @@
     <% @zombies.each do |zombie| %>
       <tr>
         <td><%= zombie.name %></td>
-        <td><%= zombie.bio %></td>
-        <td><%= zombie.age %></td>
+        <td><%= zombie.brain.flavor %></td>
         <td><%= link_to 'Show', zombie %></td>
         <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
         <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -4,7 +4,7 @@ class ZombiesController < ApplicationController
   # GET /zombies
   # GET /zombies.json
   def index
-    @zombies = Zombie.all
+    @zombies = Zombie.includes(:brain).all
   end
 
   # GET /zombies/1
@@ -40,6 +40,7 @@ class ZombiesController < ApplicationController
   # PATCH/PUT /zombies/1
   # PATCH/PUT /zombies/1.json
   def update
+
     respond_to do |format|
       if @zombie.update(zombie_params)
         format.html { redirect_to @zombie, notice: 'Zombie was successfully updated.' }

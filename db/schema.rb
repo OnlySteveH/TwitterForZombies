@@ -11,12 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216104702) do
+ActiveRecord::Schema.define(version: 20160216144922) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "zombie_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "brains", force: :cascade do |t|
+    t.integer  "zombie_id"
+    t.string   "status"
+    t.string   "flavor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "brains", ["zombie_id"], name: "index_brains_on_zombie_id"
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "zombie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "zombies", force: :cascade do |t|
     t.string   "name"
     t.text     "bio"
-    t.integer  "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "email"
