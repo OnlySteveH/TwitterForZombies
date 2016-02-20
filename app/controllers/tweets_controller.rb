@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   before_filter :get_zombie
 
   def get_zombie
-    @zombie = Zombie.find(:zombie_id)
+    @zombie = Zombie.find(params[:zombie_id])
   end
   # GET /tweets
   # GET /tweets.json
@@ -47,7 +47,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully updated.' }
+        format.html { redirect_to [@zombie, @tweet], notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
       else
         format.html { render :edit }
