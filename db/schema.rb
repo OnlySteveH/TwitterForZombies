@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217160746) do
+ActiveRecord::Schema.define(version: 20161005094820) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "zombie_id"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20160217160746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "assignments", ["role_id"], name: "index_assignments_on_role_id"
+  add_index "assignments", ["zombie_id"], name: "index_assignments_on_zombie_id"
 
   create_table "brains", force: :cascade do |t|
     t.integer  "zombie_id"
@@ -39,6 +42,12 @@ ActiveRecord::Schema.define(version: 20160217160746) do
   create_table "tweets", force: :cascade do |t|
     t.string   "status"
     t.integer  "zombie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

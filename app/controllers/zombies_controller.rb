@@ -1,5 +1,5 @@
 class ZombiesController < ApplicationController
-  before_action :set_zombie, only: [:show, :edit, :update, :destroy]
+  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp]
 
   # GET /zombies
   # GET /zombies.json
@@ -7,9 +7,27 @@ class ZombiesController < ApplicationController
     @zombies = Zombie.includes(:brain).all
   end
 
+  def decomp
+    #@zombie = Zombie.find(params[:id])
+    if @zombie.decomp == 'Dead(again)'
+      render json: @zombie.to_json(only: :decomp), status: :unprocessable_entity
+    else
+      render json: @zombie.to_json(only: :decomp), status: :ok
+    end
+  end
+
   # GET /zombies/1
   # GET /zombies/1.json
   def show
+    #@zombie = Zombie.find(params[:id])
+    respond_to do |format|
+      format.html do
+        if @zombie.decomp == 'Dead(again)'
+          render :dead_again
+        end
+      end
+      format.json { render json: @zombie }
+    end
   end
 
   # GET /zombies/new
@@ -34,6 +52,7 @@ class ZombiesController < ApplicationController
         format.html { render :new }
         format.json { render json: @zombie.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
@@ -58,7 +77,8 @@ class ZombiesController < ApplicationController
     @zombie.destroy
     respond_to do |format|
       format.html { redirect_to zombies_url, notice: 'Zombie was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { head :ok }
+      format.js
     end
   end
 
