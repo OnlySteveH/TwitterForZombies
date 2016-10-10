@@ -1,5 +1,5 @@
 class ZombiesController < ApplicationController
-  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp]
+  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp, :custom_decomp]
 
   # GET /zombies
   # GET /zombies.json
@@ -22,8 +22,8 @@ class ZombiesController < ApplicationController
     #@zombie = Zombie.find(params[:id])
     respond_to do |format|
       format.html do
-        if @zombie.decomp == 'Dead(again)'
-          render :dead_again
+        if @zombie.decomp == 'Dead (again)'
+          #render :dead_again
         end
       end
       format.json { render json: @zombie }
@@ -82,6 +82,18 @@ class ZombiesController < ApplicationController
     end
   end
 
+  def custom_decomp
+    @zombie = Zombie.find(params[:id])
+    @zombie.decomp = params[:zombie][:decomp]
+    @zombie.save
+
+    respond_to do |format|
+      #format.html
+      format.js
+      format.json { render json: @zombie.to_json(only: :decomp) }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_zombie
@@ -90,6 +102,6 @@ class ZombiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zombie_params
-      params.require(:zombie).permit(:name, :bio, :age)
+      params.require(:zombie).permit(:name, :bio, :age, :decomp, :custom_decomp)
     end
 end

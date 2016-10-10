@@ -28,7 +28,7 @@ class StringExtensionTest < ActiveSupport::TestCase
 	end
 
 	def test_zombie_in_humanize_raises_error
-		assert_raise(RuntimeError) do
+		assert_raise(RuntimeError, "zombie being humanized!") do
 			"zombie".humanize
 		end
 	end

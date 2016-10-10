@@ -1,5 +1,6 @@
 class Zombie < ActiveRecord::Base
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: true
+	validates :graveyard, presence: true
 	has_one :brain, dependent: :destroy
 	has_many :assignments
 	has_many :roles, through: :assignments
@@ -14,10 +15,14 @@ class Zombie < ActiveRecord::Base
 					{ include: :brain, except: [:created_at, :updated_at, :id] })
 	end
 
+	def avatar_url
+    "http://zombitar.com/#{self.id}.jpg"
+	end
+
 	private
 
 	def decomp_change_notification
-		ZombieMailer.decomp_change(self).deliver_now
+		#ZombieMailer.decomp_change(self).deliver_now
 	end
 
 end
