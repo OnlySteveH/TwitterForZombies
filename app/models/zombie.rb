@@ -1,5 +1,5 @@
 class Zombie < ActiveRecord::Base
-	validates :name, presence: true, uniqueness: true
+	validates :name, presence: true
 	validates :graveyard, presence: true
 	has_one :brain, dependent: :destroy
 	has_many :assignments

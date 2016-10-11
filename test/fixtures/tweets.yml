@@ -11,3 +11,7 @@ ash_2:
 one:
   status: Chomping hearts
   zombie_id: 1
+
+hello:
+  status: Tweet for integration testing
+  zombie_id: 1

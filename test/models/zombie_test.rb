@@ -4,9 +4,10 @@ class ZombieTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
   should validate_presence_of(:graveyard)
   should have_many(:tweets)
-  should validate_uniqueness_of(:name)
+  #should validate_uniqueness_of(:name)
 	def setup
-		@z = zombies(:ash)
+		#@z = zombies(:ash)
+    @z = FactoryGirl.create(:zombie)
 	end
 
   test "invalid without a name" do

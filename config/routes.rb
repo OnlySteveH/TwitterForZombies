@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :roles
 
   get '/tweets' => 'tweets#index'
+  root :to => 'tweets#index'
 end
