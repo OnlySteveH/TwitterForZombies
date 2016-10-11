@@ -14,8 +14,9 @@ describe Zombie do
 		expect(zombie.tweets).to include(tweet2)
   end
 
-  it "is born with 2 weapons" do
-  	zombie = Zombie.new(name: "Ash")
-  	expect(zombie.weapons.count).to eq(2)
+  it "is born with 1 weapon" do
+  	w = Weapon.new(name: "Sword", zombie_id: 1)
+  	zombie = Zombie.new(name: "Ash", graveyard: "The Chequers")
+  	expect(zombie.weapon.count).to eq(1)
   end
 end

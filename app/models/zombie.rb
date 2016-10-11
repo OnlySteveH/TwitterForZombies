@@ -5,7 +5,7 @@ class Zombie < ActiveRecord::Base
 	has_many :assignments
 	has_many :roles, through: :assignments
 	has_many :tweets
-	has_many :weapons
+	has_one :weapon
 	scope :rotting, -> { where(rotting: true) }
 	scope :recent, -> { order("created_at desc").limit(3) }
 	after_save :decomp_change_notification, if: :decomp_changed?
@@ -17,6 +17,11 @@ class Zombie < ActiveRecord::Base
 
 	def avatar_url
     "http://zombitar.com/#{self.id}.jpg"
+	end
+
+	def decapitate
+		weapon.slice
+		self.decomp = "Dead (again)"
 	end
 
 	private

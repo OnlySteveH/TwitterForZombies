@@ -41,6 +41,7 @@ end
 
 group :test do
   gem 'shoulda'
+  gem 'mocha'
 end
 
 gem 'web-console', '~> 2.0', group: :development

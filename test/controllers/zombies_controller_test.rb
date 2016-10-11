@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ZombiesControllerTest < ActionController::TestCase
   setup do
-    @zombie = zombies(:one)
+    @zombie = zombies(:ash)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class ZombiesControllerTest < ActionController::TestCase
 
   test "should create zombie" do
     assert_difference('Zombie.count') do
-      post :create, zombie: { age: @zombie.age, bio: @zombie.bio, name: @zombie.name }
+      post :create, zombie: { name: "Steve", graveyard: "The Three Tuns" }
     end
 
     assert_redirected_to zombie_path(assigns(:zombie))
@@ -35,7 +35,7 @@ class ZombiesControllerTest < ActionController::TestCase
   end
 
   test "should update zombie" do
-    patch :update, id: @zombie, zombie: { age: @zombie.age, bio: @zombie.bio, name: @zombie.name }
+    patch :update, id: @zombie, zombie: { bio: @zombie.bio, name: @zombie.name }
     assert_redirected_to zombie_path(assigns(:zombie))
   end
 
