@@ -20,8 +20,8 @@ class ZombiesTest < ActionDispatch::IntegrationTest
   end
 
   test "navigation is available to the zombie page" do
-  	zombie = zombies(:ash)
-  	tweet = tweets(:hello)
+  	tweet = FactoryGirl.create(:tweet)
+    zombie = tweet.zombie
   	visit root_url
   	within("#tweet_#{tweet.id}") do
   		click_link zombie.name

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     patch :custom_decomp, on: :member
   end
   resources :roles
+  resources :tweets
 
   get '/tweets' => 'tweets#index'
   root :to => 'tweets#index'

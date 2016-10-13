@@ -5,7 +5,7 @@ class String
 
 	def humanize
 		if self =~ /zombie/
-			raise RuntimeError
+			#raise RuntimeError
 		else
 			self.downcase.capitalize
 		end

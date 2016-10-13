@@ -27,10 +27,10 @@ class StringExtensionTest < ActiveSupport::TestCase
 		assert_match /brains/, "LIKES ME BRAINS!".humanize
 	end
 
-	def test_zombie_in_humanize_raises_error
-		assert_raise(RuntimeError, "zombie being humanized!") do
-			"zombie".humanize
-		end
-	end
+	# def test_zombie_in_humanize_raises_error
+	# 	assert_raise(RuntimeError, "zombie being humanized!") do
+	# 		"zombie".humanize
+	# 	end
+	# end
 
 end

@@ -4,10 +4,11 @@ class ZombieTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
   should validate_presence_of(:graveyard)
   should have_many(:tweets)
-  #should validate_uniqueness_of(:name)
+  should validate_uniqueness_of(:name)
 	def setup
 		#@z = zombies(:ash)
     @z = FactoryGirl.create(:zombie)
+    @az = FactoryGirl.create(:armed_zombie)
 	end
 
   test "invalid without a name" do
@@ -42,12 +43,16 @@ class ZombieTest < ActiveSupport::TestCase
   end
 
   test "decapitate should set status to dead again" do
-    @z.weapon.stubs(:slice)
-    assert "Dead (again)", @z.decomp
+    #@z.weapon.stubs(:slice)
+    @zombie = FactoryGirl.create(:zombie, 
+                            decomp: "Rotting", 
+                            weapon: FactoryGirl.create(:weapon))
+    @zombie.decapitate
+    assert_equal "Dead (again)", @zombie.decomp
   end
 
-  test "decpitate should call slice" do
-    @z.weapon.expects(:slice)
-    @z.decapitate
+  test "decapitate should call slice" do
+    @az.weapon.expects(:slice)
+    @az.decapitate
   end
 end
