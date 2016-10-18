@@ -27,7 +27,7 @@ describe Zombie do
 
 	it "should be hungry when created" do
 		zombie = Zombie.create(name: "Steve3", graveyard: "The Artichoke")
-		expect(zombie).to be_hungry
+		expect(zombie.hungry?).to be_truthy
 	end
 
 	it "should respond to hungry?" do

@@ -43,7 +43,6 @@ class ZombiesController < ApplicationController
   # POST /zombies.json
   def create
     @zombie = Zombie.new(zombie_params)
-    @zombie.hungry = true
     respond_to do |format|
       if @zombie.save
         format.html { redirect_to @zombie, notice: 'Zombie was successfully created.' }

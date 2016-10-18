@@ -16,7 +16,7 @@ class Zombie < ActiveRecord::Base
 	end
 
 	def hungry
-		return "I am hungry"
+		!hungry.false?
 	end
 
 	def avatar_url
