@@ -25,9 +25,14 @@ describe Zombie do
   	expect{ zombie.save }.to change{ Zombie.count }.by(1)
 	end
 
-	it "should be hungry when created" do
+	it "should be hungry? when created" do
 		zombie = Zombie.create(name: "Steve3", graveyard: "The Artichoke")
 		expect(zombie.hungry?).to be_truthy
+	end
+
+	it "should be hungry when created - testing the method without question mark" do
+		zombie = Zombie.create(name: "Steve3", graveyard: "The Artichoke")
+		expect(zombie.hungry).to be_truthy
 	end
 
 	it "should respond to hungry?" do

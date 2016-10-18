@@ -15,7 +15,11 @@ class Zombie < ActiveRecord::Base
 					{ include: :brain, except: [:created_at, :updated_at, :id] })
 	end
 
-	def hungry
+	# def hungry
+	# 	!hungry.false?
+	# end
+
+	def hungry?
 		!hungry.false?
 	end
 
