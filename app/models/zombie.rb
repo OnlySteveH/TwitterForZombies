@@ -15,6 +15,10 @@ class Zombie < ActiveRecord::Base
 					{ include: :brain, except: [:created_at, :updated_at, :id] })
 	end
 
+	def hungry
+		return "I am hungry"
+	end
+
 	def avatar_url
     "http://zombitar.com/#{self.id}.jpg"
 	end
@@ -23,6 +27,10 @@ class Zombie < ActiveRecord::Base
 		weapon.slice
 		self.decomp = "Dead (again)"
 	end
+
+	# def initialize
+
+	# end
 
 	private
 

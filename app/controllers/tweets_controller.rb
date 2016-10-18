@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-  before_filter :get_zombie
+  #ßbefore_filter :get_zombie
 
   def get_zombie
     @zombie = Zombie.find(self.zombie_id)
@@ -8,7 +8,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = @zombie.tweets
+    @tweets = @zombie.tweets.all
   end
 
   # GET /tweets/1

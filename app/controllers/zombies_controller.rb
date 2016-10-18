@@ -43,7 +43,7 @@ class ZombiesController < ApplicationController
   # POST /zombies.json
   def create
     @zombie = Zombie.new(zombie_params)
-
+    @zombie.hungry = true
     respond_to do |format|
       if @zombie.save
         format.html { redirect_to @zombie, notice: 'Zombie was successfully created.' }
@@ -102,6 +102,6 @@ class ZombiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zombie_params
-      params.require(:zombie).permit(:name, :bio, :decomp, :custom_decomp, :graveyard)
+      params.require(:zombie).permit(:name, :bio, :decomp, :custom_decomp, :graveyard, :hungry)
     end
 end

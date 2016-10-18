@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011113144) do
+ActiveRecord::Schema.define(version: 20161018133332) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "zombie_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20161011113144) do
     t.string   "email"
     t.string   "decomp"
     t.string   "graveyard"
+    t.boolean  "hungry"
   end
 
 end
