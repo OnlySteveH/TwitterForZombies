@@ -1,6 +1,5 @@
 class ZombiesController < ApplicationController
-  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp, :custom_decomp, :toggle]
-  after_action :set_hungry, only: [:create, :new]
+  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp, :custom_decomp, :toggle, :make_hungry]
 
   # GET /zombies
   # GET /zombies.json
