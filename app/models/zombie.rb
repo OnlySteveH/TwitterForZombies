@@ -19,9 +19,9 @@ class Zombie < ActiveRecord::Base
 	# 	!hungry.false?
 	# end
 
-	def hungry?
-		!hungry.false?
-	end
+	# def hungry?
+	# 	self.hungry == true
+	# end
 
 	def avatar_url
     "http://zombitar.com/#{self.id}.jpg"

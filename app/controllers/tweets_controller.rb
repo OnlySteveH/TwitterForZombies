@@ -8,7 +8,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = @zombie.tweets.all
+    #@tweets = @zombie.tweets
   end
 
   # GET /tweets/1

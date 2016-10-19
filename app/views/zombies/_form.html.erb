@@ -16,9 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field" id="">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
+    <%= f.label :hungry %><br />
+    <%= f.select :hungry, [true, false] %>
   </div>
+  <div class="field" id="">
+    <%= f.label :hungry %><br />
+    <%= f.text_area :bio %>
   <div class="actions">
     <%= f.submit %>
   </div>

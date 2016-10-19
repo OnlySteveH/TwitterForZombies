@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :tweets
 
   get '/tweets' => 'tweets#index'
-  root :to => 'tweets#index'
+  root :to => 'zombies#index'
 end

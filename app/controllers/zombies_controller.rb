@@ -1,5 +1,6 @@
 class ZombiesController < ApplicationController
-  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp, :custom_decomp]
+  before_action :set_zombie, only: [:show, :edit, :update, :destroy, :decomp, :custom_decomp, :toggle]
+  after_action :set_hungry, only: [:create, :new]
 
   # GET /zombies
   # GET /zombies.json
@@ -58,7 +59,6 @@ class ZombiesController < ApplicationController
   # PATCH/PUT /zombies/1
   # PATCH/PUT /zombies/1.json
   def update
-
     respond_to do |format|
       if @zombie.update(zombie_params)
         format.html { redirect_to @zombie, notice: 'Zombie was successfully updated.' }
@@ -91,6 +91,10 @@ class ZombiesController < ApplicationController
       format.js
       format.json { render json: @zombie.to_json(only: :decomp) }
     end
+  end
+
+  def toggle(params)
+    @zombie.hungry = !@zombie.hungry
   end
 
   private
