@@ -43,7 +43,7 @@ class ZombiesController < ApplicationController
   # POST /zombies
   # POST /zombies.json
   def create
-    @zombie = Zombie.new(zombie_params)
+    @zombie = Zombie.new(zombie_params)    
     respond_to do |format|
       if @zombie.save
         format.html { redirect_to @zombie, notice: 'Zombie was successfully created.' }
@@ -93,9 +93,9 @@ class ZombiesController < ApplicationController
     end
   end
 
-  def toggle(params)
-    @zombie.hungry = !@zombie.hungry
-  end
+  # def hungry?
+  #   hungry = true
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -6,11 +6,11 @@ describe Zombie do
 		expect(zombie).to be_invalid
 	end
 
-	# it "throws an exception with no name" do
-	# 	zombie = Zombie.new
-	# 	expect { zombie.save! }.to raise_error(
-	# 		ActiveRecord::RecordInvalid)
-	# end
+	it "throws an exception with no name" do
+		zombie = Zombie.new
+		expect { zombie.save! }.to raise_error(
+			ActiveRecord::RecordInvalid)
+	end
 
 	it 'includes tweets' do
 		tweet1 = Tweet.new(status: "Argh!")
@@ -30,13 +30,8 @@ describe Zombie do
 		expect(zombie.hungry?).to be_truthy
 	end
 
-	it "should be hungry when created - testing the method without question mark" do
-		zombie = Zombie.create(name: "Steve3", graveyard: "The Artichoke")
-		expect(zombie.hungry).to be_truthy
-	end
-
 	it "should respond to hungry?" do
 		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
-		expect(zombie).to respond_to(hungry?)
+		expect(zombie).to respond_to(:hungry?)
 	end
 end
