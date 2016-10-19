@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe Zombie do
+
+	# def setup
+	# 	@zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
+	# end
+
 	it 'is invalid with no name' do
 		zombie = Zombie.new
 		expect(zombie).to be_invalid
@@ -34,4 +39,25 @@ describe Zombie do
 		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
 		expect(zombie).to respond_to(:hungry?)
 	end
+
+	it "reverses the hungry status when method is called" do
+		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
+		expect(zombie.hungry).to be_truthy
+		zombie.toggle
+		expect(zombie.hungry).to be_falsey
+	end
+
+	it "reverses the hungry status when method is called" do
+		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke", hungry: false)
+		expect(zombie.hungry).to be_falsey
+		zombie.toggle
+		expect(zombie.hungry).to be_truthy
+	end	
+
+	it "toggle reverses the hungry status" do
+		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
+		#h = zombie.hungry
+		#zombie.toggle
+		expect(zombie.toggle).to change { zombie.hungry }
+	end	
 end
