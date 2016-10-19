@@ -56,8 +56,8 @@ describe Zombie do
 
 	it "toggle reverses the hungry status" do
 		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
-		#h = zombie.hungry
+		h = zombie.hungry
 		#zombie.toggle
-		expect(zombie.toggle).to change { zombie.hungry }
+		expect(zombie.toggle).to change { zombie.hungry }.from(h).to(!h)
 	end	
 end
