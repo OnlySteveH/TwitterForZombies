@@ -16,6 +16,7 @@ class Zombie < ActiveRecord::Base
 	end
 
 	def make_hungry
+		#makes the zombie hungry set to true
 		hungry = true
 	end
 
@@ -23,8 +24,8 @@ class Zombie < ActiveRecord::Base
 		hungry == true
 	end
 
-	def toggle(params)
-    hungry = !hungry
+	def toggle(zombie_params)
+    hungry = !hungry?
   end
 
 	def avatar_url
