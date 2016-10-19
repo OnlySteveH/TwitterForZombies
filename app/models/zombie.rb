@@ -9,6 +9,11 @@ class Zombie < ActiveRecord::Base
 	scope :rotting, -> { where(rotting: true) }
 	scope :recent, -> { order("created_at desc").limit(3) }
 	after_save :decomp_change_notification, if: :decomp_changed?
+	after_initialize :init
+
+	def init
+		self.hungry = true if self.hungry.nil?
+	end
 
 	def as_json(options = nil)
 		super(options || 

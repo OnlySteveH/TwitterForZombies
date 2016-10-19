@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019161010) do
+ActiveRecord::Schema.define(version: 20161019185056) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "zombie_id"
@@ -53,12 +53,12 @@ ActiveRecord::Schema.define(version: 20161019161010) do
   create_table "zombies", force: :cascade do |t|
     t.string   "name"
     t.text     "bio"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "email"
     t.string   "decomp"
     t.string   "graveyard"
-    t.boolean  "hungry",     default: true
+    t.boolean  "hungry"
   end
 
 end
