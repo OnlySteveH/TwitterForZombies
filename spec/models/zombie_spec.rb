@@ -17,6 +17,10 @@ describe Zombie do
 			ActiveRecord::RecordInvalid)
 	end
 
+	it "should respond to :name" do
+		expect(subject).to respond_to(:name)
+	end
+
 	it 'includes tweets' do
 		tweet1 = Tweet.new(status: "Argh!")
 		tweet2 = Tweet.new(status: "Hungry!")
@@ -32,7 +36,7 @@ describe Zombie do
 
 	it "should be hungry? when created" do
 		zombie = Zombie.create(name: "Steve3", graveyard: "The Artichoke")
-		expect(zombie.hungry?).to be_truthy
+		expect(zombie).to satisfy { |z| z.hungry? }
 	end
 
 	it "should respond to hungry?" do
@@ -56,6 +60,9 @@ describe Zombie do
 
 	it "toggle reverses the hungry status" do
 		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
+		h = zombie.hungry
+		expect { zombie.toggle }.to change { zombie.hungry }.from(h).to(!h)
+		zombie.hungry = false
 		h = zombie.hungry
 		expect { zombie.toggle }.to change { zombie.hungry }.from(h).to(!h)
 	end	
