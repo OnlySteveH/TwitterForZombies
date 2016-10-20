@@ -41,20 +41,20 @@ describe Zombie do
 		expect(zombie).to respond_to(:hungry?)
 	end
 
-	it "reverses the hungry status when method is called" do
+	it "reverses the hungry status from truthy when toggle is called" do
 		expect(zombie.hungry).to be_truthy
 		zombie.toggle
 		expect(zombie.hungry).to be_falsey
 	end
 
-	it "reverses the hungry status when method is called" do
+	it "reverses the hungry status from falsey when toggle is called" do
 		zombie.hungry = false
 		expect(zombie.hungry).to be_falsey
 		zombie.toggle
 		expect(zombie.hungry).to be_truthy
 	end	
 
-	it "toggle reverses the hungry status" do
+	it "toggle method toggles either hungry status" do
 		h = zombie.hungry
 		expect { zombie.toggle }.to change { zombie.hungry }.from(h).to(!h)
 		zombie.hungry = false
