@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe Zombie do
 
-	# def setup
-	# 	@zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
-	# end
+	let(:zombie) { Zombie.create(name: "Steve", graveyard: "The Artichoke") }
 
 	it 'is invalid with no name' do
 		zombie = Zombie.new
@@ -21,6 +19,8 @@ describe Zombie do
 		expect(subject).to respond_to(:name)
 	end
 
+	it { expect(subject).to respond_to(:name) }
+
 	it 'includes tweets' do
 		tweet1 = Tweet.new(status: "Argh!")
 		tweet2 = Tweet.new(status: "Hungry!")
@@ -30,36 +30,31 @@ describe Zombie do
   end
 
   it "changes the number of zombies by one" do
-  	zombie = Zombie.new(name: "Steve", graveyard: "The Artichoke")
   	expect{ zombie.save }.to change{ Zombie.count }.by(1)
 	end
 
 	it "should be hungry? when created" do
-		zombie = Zombie.create(name: "Steve3", graveyard: "The Artichoke")
 		expect(zombie).to satisfy { |z| z.hungry? }
 	end
 
 	it "should respond to hungry?" do
-		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
 		expect(zombie).to respond_to(:hungry?)
 	end
 
 	it "reverses the hungry status when method is called" do
-		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
 		expect(zombie.hungry).to be_truthy
 		zombie.toggle
 		expect(zombie.hungry).to be_falsey
 	end
 
 	it "reverses the hungry status when method is called" do
-		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke", hungry: false)
+		zombie.hungry = false
 		expect(zombie.hungry).to be_falsey
 		zombie.toggle
 		expect(zombie.hungry).to be_truthy
 	end	
 
 	it "toggle reverses the hungry status" do
-		zombie = Zombie.create(name: "Steve2", graveyard: "The Artichoke")
 		h = zombie.hungry
 		expect { zombie.toggle }.to change { zombie.hungry }.from(h).to(!h)
 		zombie.hungry = false
