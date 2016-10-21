@@ -61,4 +61,18 @@ describe Zombie do
 		h = zombie.hungry
 		expect { zombie.toggle }.to change { zombie.hungry }.from(h).to(!h)
 	end	
+
+	context "#decapitate" do
+		it "sets status to dead again" do
+			zombie.weapon.stub(:slice)
+			zombie.decapitate
+			expect(zombie.decomp).to eq("Dead (again)")
+		end
+
+		it "calls weapon.slice" do
+			allow(zombie.weapon).to receive(:slice) { true }
+			#zombie.weapon.should_receive(:slice)
+			zombie.decapitate
+		end
+	end
 end

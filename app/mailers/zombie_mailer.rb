@@ -23,4 +23,8 @@ class ZombieMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+
+  def welcome(zombie)
+    mail(from: "admin@zombie.com", to: 'zombie@example.com', subject: "Welcome")
+  end
 end
