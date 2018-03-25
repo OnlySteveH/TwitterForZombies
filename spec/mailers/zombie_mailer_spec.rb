@@ -3,6 +3,7 @@ require 'rails_helper'
 describe ZombieMailer do 
 	context '#welcome' do
 		let(:zombie) { Zombie.create(name: "Ian", graveyard: "Raj") }
+		#let(:zombie) { stub(name: "Ian", graveyard: "Raj") }
 		subject { ZombieMailer.welcome(zombie) }
 		 it "emanates from the correct email address"  do
 		 	 expect(subject.from).to include("admin@zombie.com")  

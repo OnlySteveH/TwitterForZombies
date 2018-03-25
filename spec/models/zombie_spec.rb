@@ -9,6 +9,10 @@ describe Zombie do
 		expect(zombie).to be_invalid
 	end
 
+	it "validates presence of name" do
+		expect(zombie).to validate_presence_of_name
+	end
+
 	it "throws an exception with no name" do
 		zombie = Zombie.new
 		expect { zombie.save! }.to raise_error(
